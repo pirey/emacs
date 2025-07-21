@@ -1,4 +1,4 @@
-(set-face-attribute 'default nil :family "Monaspace Neon" :height 140)
+(set-face-attribute 'default nil :family "Monaspace Neon" :height 130)
 (load-theme 'modus-vivendi-tinted t)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
