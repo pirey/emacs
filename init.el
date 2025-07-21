@@ -5,10 +5,6 @@
 (scroll-bar-mode -1)
 (global-hl-line-mode 1)
 
-;; org
-(setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
-(global-set-key (kbd "C-c a") #'org-agenda)
-(global-set-key (kbd "C-c c") #'org-capture)
 
 ;; package
 (require 'package)
@@ -21,15 +17,14 @@
 
 (package-install 'magit)
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+;; vim
+(package-install 'evil)
+(require 'evil)
+(evil-mode 1)
+(define-key evil-normal-state-map (kbd "C-u") 'evil-scroll-up)
+
+
+;; org
+(setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
+(global-set-key (kbd "C-c a") #'org-agenda)
+(global-set-key (kbd "C-c c") #'org-capture)
