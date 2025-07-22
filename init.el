@@ -16,9 +16,11 @@
 (setq use-package-always-ensure t)
 
 ;; themes and packages
-(use-package spacemacs-theme
+
+(use-package iceberg-theme
   :config
-  (load-theme 'spacemacs-dark t))
+  (iceberg-theme-create-theme-file) ;; Generates the Solarized variant
+  (load-theme 'solarized-iceberg-dark t))
 
 (use-package exec-path-from-shell
   :if (memq window-system '(mac ns x))
