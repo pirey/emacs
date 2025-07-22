@@ -7,5 +7,6 @@ ido.last
 transient
 url
 .lsp-session
+.lsp-session-v1
 tree-sitter
 flycheck_init.el
