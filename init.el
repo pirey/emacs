@@ -41,4 +41,3 @@
 (global-hl-line-mode 1)
 (set-face-attribute 'default nil :family "Monaspace Neon" :height 160)
 (setq scroll-error-top-bottom t)
-
