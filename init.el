@@ -6,24 +6,16 @@
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
-(defvar my-packages
-  '(magit evil spacemacs-theme))
+(unless package-archive-contents
+  (package-refresh-contents))
 
-(defun my-packages-installed-p ()
-  (cl-loop for p in my-packages
-           when (not (package-installed-p p)) do (cl-return nil)
-           finally (cl-return t)))
-
-(unless (my-packages-installed-p)
-  ;; check for new packages (package versions)
-  (package-refresh-contents)
-  ;; install the missing packages
-  (dolist (p my-packages)
-    (when (not (package-installed-p p))
-      (package-install p))))
-
-;; package config
+;; bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
 (require 'use-package)
+(setq use-package-always-ensure t)
+
+;; themes and packages
 (use-package spacemacs-theme
   :config
   (load-theme 'spacemacs-dark t))
@@ -33,6 +25,8 @@
   (setq evil-want-C-u-scroll t)
   :config
   (evil-mode 1))
+
+(use-package magit)
 
 (use-package org
   :init
@@ -46,3 +40,5 @@
 (scroll-bar-mode -1)
 (global-hl-line-mode 1)
 (set-face-attribute 'default nil :family "Monaspace Neon" :height 160)
+(setq scroll-error-top-bottom t)
+
