@@ -77,10 +77,30 @@
                 nil
                 t))
 
+(use-package lsp-mode
+  :hook (php-mode . lsp-deferred)
+  :commands lsp-deferred
+  :config
+  (setq lsp-phpactor-path "~/.composer/vendor/bin/phpactor")
+  (setq lsp-clients-php-server-command '("phpactor" "language-server")))
+(use-package lsp-ui
+  :commands lsp-ui-mode)
+(use-package php-mode
+  :mode "\\.php\\'"
+  :config
+  (setq php-mode-coding-style 'psr2))
+(use-package web-mode
+  :mode "\\.blade\\.php\\'"
+  :config
+  (setq web-mode-enable-auto-indentation t))
+(use-package flycheck
+  :hook ((php-mode . flycheck-mode)))
+
 ;; options
+(set-face-attribute 'default nil :family "Monaspace Neon" :height 160 :width 'regular)
 (menu-bar-mode -1)
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
-(global-hl-line-mode 1)
-(set-face-attribute 'default nil :family "Monaspace Neon" :height 160)
+;; (global-hl-line-mode 1)
 (setq scroll-error-top-bottom t)
+(add-hook 'emacs-startup-hook 'toggle-frame-maximized)
