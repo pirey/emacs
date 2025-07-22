@@ -20,6 +20,11 @@
   :config
   (load-theme 'spacemacs-dark t))
 
+(use-package exec-path-from-shell
+  :if (memq window-system '(mac ns x))
+  :config
+  (exec-path-from-shell-initialize))
+
 (use-package evil
   :init
   (setq evil-want-C-u-scroll t)
@@ -31,12 +36,12 @@
 (use-package org
   :init
   (setq org-agenda-files (directory-files-recursively "~/org" "\\.org$"))
+  (setq org-default-notes-file "~/org/from-emacs.org")
   :bind (("C-c a" . org-agenda)
          ("C-c c" . org-capture)))
 
-;;;; Code Completion
+;; Code Completion
 (use-package corfu
-  :ensure t
   ;; Optional customizations
   :custom
   (corfu-cycle t)                 ; Allows cycling through candidates
