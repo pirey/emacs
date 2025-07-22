@@ -6,3 +6,6 @@ projects
 ido.last
 transient
 url
+.lsp-session
+tree-sitter
+flycheck_init.el
